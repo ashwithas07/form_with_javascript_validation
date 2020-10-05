@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <title>Form With Javascript Validation</title>
+    <link rel="stylesheet" href="validation.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        function validate_form() {
+            if (document.emp.emp_name.value == "") {
+                swal("Please Enter Your Name");
+                return false;
+            }
+            if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(document.emp.email_id.value)) {
+                swal("Please Enter valid email address!")
+                return (false)
+            }
+            if (document.emp.num.value == "") {
+                swal("Enter Contact Number");
+                return false;
+            }
+            var option = document.getElementsByName('gender');
+            if (!(option[0].checked || option[1].checked)) {
+                swal("Please Select Your Gender");
+                return false;
+            }
+            var option = document.getElementsByName('cbx');
+            if (!(option[0].checked)) {
+                swal("Please indicate that you accept the Terms and Conditions");
+                return false;
+            }
+            alert("sucessfully Submitted");
+        }
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+                swal("Enter Number");
+                return false;
+            }
+            return true;
+        }
+        //-->
+    </script>
+</head>
+
+<body>
+    <section class="form-bg">
+        <div class="container">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="">
+                    <div class="">
+                        <div class="col-md-12 form-btgap">
+                            <div class="logo-register">
+                                <a href="register.html"> <img src="logo.png" width="150px"></a>
+                            </div>
+                            <h2>Form With Javascript Validation</h2>
+                            <form name="emp" action="" onsubmit="return validate_form();" method="post" class=" box-style">
+                                <table align="center" width=40% width="100%" cellspacing="2" cellpadding="2" border="5">
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label> NAME</label>
+                                            <input type="text" value="" name="emp_name" size="24" class="form-control"> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>EMAIL ID</label>
+                                            <input type="text" value="" name="email_id" size="24" class="form-control"> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>CONTACT NUMBER</label>
+                                            <input type="text" value="" name="num" onkeypress="return isNumberKey(event)" size="24" class="form-control"> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>GENDER</label>
+                                            <input type="radio" name="gender" value="Male"> Male&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="Female"> Female </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <input type="checkbox" name="cbx" value=""> I Agree the <u>Terms and Conditions</u> </div>
+                                    </div>
+                                    <div class="row">
+                                        <p align="center">
+                                            <input type="submit" value="  Submit" name="B4" class="btn-style popshadow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="reset" value="  Reset All   " name="B5" class="btn-style popshadow"> </p>
+                                    </div>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
